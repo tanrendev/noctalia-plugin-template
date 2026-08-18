@@ -1,0 +1,9 @@
+rules:
+  artipacked:
+    ignore:
+      - release.yaml
+      - update-upstream.yaml
+  undocumented-permissions:
+    ignore:
+      - release.yaml
+      - update-upstream.yaml

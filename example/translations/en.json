@@ -1,0 +1,8 @@
+{
+  "settings": {
+    "label": {
+      "label": "Label",
+      "description": "Text shown in the bar."
+    }
+  }
+}

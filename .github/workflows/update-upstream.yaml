@@ -1,0 +1,35 @@
+name: update-upstream
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: update-upstream
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: sync official-plugins files
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          token: ${{ secrets.UPSTREAM_TOKEN || github.token }}
+      - env:
+          GH_TOKEN: ${{ secrets.UPSTREAM_TOKEN || github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          ./sync-upstream.sh
+          git diff --quiet && exit 0
+          git checkout -B update-upstream
+          git commit -am "chore: sync official-plugins files"
+          git push --force origin update-upstream
+          gh pr view update-upstream >/dev/null 2>&1 || gh pr create --fill --label dependencies

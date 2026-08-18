@@ -1,0 +1,5 @@
+[tool.commitizen]
+version = "0.1.0"
+tag_format = "v$version"
+bump_message = "chore: release $new_version"
+version_files = ["example/plugin.toml:^version"]

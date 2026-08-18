@@ -1,0 +1,21 @@
+id = "tanren/example"
+name = "Example"
+version = "0.1.0"
+plugin_api = 28
+author = "tanren"
+license = "MIT"
+dependencies = []
+tags = ["bar", "demo"]
+icon = "puzzle"
+description = "Bar widget template with one setting and one IPC event."
+
+[[widget]]
+id = "hello"
+entry = "hello.luau"
+
+  [[widget.setting]]
+  key = "label"
+  type = "string"
+  label_key = "settings.label.label"
+  description_key = "settings.label.description"
+  default = "Hello"

@@ -1,0 +1,11 @@
+[[plugin]]
+id = "tanren/example"
+name = "Example"
+version = "0.1.0"
+author = "tanren"
+license = "MIT"
+icon = "puzzle"
+description = "Bar widget template with one setting and one IPC event."
+plugin_api = 28
+tags = ["bar", "demo"]
+dependencies = []
